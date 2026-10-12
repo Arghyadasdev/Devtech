@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { useState, useEffect, useRef } from "react";
 import {
   Code2, Cloud, Brain, GraduationCap, Briefcase, Mail,
-  Phone, Globe, Github, Download, ExternalLink, BookOpen,
+  Phone, Globe, GitFork, Download, ExternalLink, BookOpen,
   FlaskConical, Sparkles, MapPin, ArrowRight,
 } from "lucide-react";
 
@@ -205,7 +205,7 @@ export default function PortfolioPage() {
                 {/* Social links */}
                 <div style={{ display: "flex", flexDirection: "column", gap: 8, width: "100%", maxWidth: 200 }}>
                   {[
-                    { icon: <Github size={14} />, label: "Arghyadasdev",       href: "https://github.com/Arghyadasdev",           color: "#a78bfa" },
+                    { icon: <GitFork size={14} />, label: "Arghyadasdev",       href: "https://github.com/Arghyadasdev",           color: "#a78bfa" },
                     { icon: <Mail size={14} />,   label: "arghayadasdev@gmail.com", href: "mailto:arghayadasdev@gmail.com",        color: "#818cf8" },
                     { icon: <Phone size={14} />,  label: "+91 7001982361",      href: "tel:+917001982361",                         color: "#60a5fa" },
                     { icon: <Globe size={14} />,  label: "devtech.live",        href: "https://devtech.live",                      color: "#34d399" },
@@ -523,7 +523,7 @@ export default function PortfolioPage() {
                   {[
                     { icon: <Mail size={15} />, label: "arghayadasdev@gmail.com", href: "mailto:arghayadasdev@gmail.com", color: "#8b5cf6" },
                     { icon: <Phone size={15} />, label: "+91 7001982361", href: "tel:+917001982361", color: "#6366f1" },
-                    { icon: <Github size={15} />, label: "Arghyadasdev", href: "https://github.com/Arghyadasdev", color: "#818cf8" },
+                    { icon: <GitFork size={15} />, label: "Arghyadasdev", href: "https://github.com/Arghyadasdev", color: "#818cf8" },
                   ].map(({ icon, label, href, color }) => (
                     <a key={label} href={href}
                       style={{ display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 10, padding: "11px 18px", textDecoration: "none", color: "rgba(255,255,255,0.45)", fontSize: 13, fontFamily: "var(--sans)", transition: "all 0.15s ease" }}
