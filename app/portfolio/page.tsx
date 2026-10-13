@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { useState, useEffect, useRef } from "react";
 import {
   Code2, Cloud, Brain, GraduationCap, Briefcase, Mail,
-  Phone, Globe, GitFork, Download, ExternalLink, BookOpen,
+  Phone, Globe, GitFork, FileText, ExternalLink, BookOpen,
   FlaskConical, Sparkles, MapPin, ArrowRight,
 } from "lucide-react";
 
@@ -130,6 +130,18 @@ function SkillRing({ name, level, color }: { name: string; level: number; color:
 /* ── page ───────────────────────────────────── */
 export default function PortfolioPage() {
   const [activeSection, setActiveSection] = useState("skills");
+  const [stars, setStars] = useState<{ left: number; top: number; size: number; delay: number }[]>([]);
+
+  useEffect(() => {
+    setStars(
+      Array.from({ length: 70 }, () => ({
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        size: Math.random() * 2 + 1,
+        delay: Math.random() * 4,
+      }))
+    );
+  }, []);
 
   return (
     <>
@@ -139,8 +151,20 @@ export default function PortfolioPage() {
         @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
         @keyframes pulse-ring { 0%{box-shadow:0 0 0 0 rgba(139,92,246,0.4)} 70%{box-shadow:0 0 0 20px rgba(139,92,246,0)} 100%{box-shadow:0 0 0 0 rgba(139,92,246,0)} }
         @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+        @keyframes twinkle { 0%,100%{opacity:0.15} 50%{opacity:0.9} }
+        @keyframes cube-spin { from{transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg);} to{transform:rotateX(360deg) rotateY(360deg) rotateZ(360deg);} }
+        @keyframes scroll-dot { 0%{transform:translateY(0); opacity:1;} 70%{transform:translateY(14px); opacity:0;} 100%{transform:translateY(0); opacity:0;} }
 
-        .owner-grid { display:grid; grid-template-columns:1fr 2fr; gap:48px; align-items:start; }
+        .cube-3d-wrap{ perspective:1000px; }
+        .cube-3d{ width:200px; height:200px; position:relative; transform-style:preserve-3d; animation:cube-spin 18s linear infinite; }
+        .cube-face{ position:absolute; width:200px; height:200px; border:1px solid rgba(139,92,246,0.45); background:linear-gradient(135deg, rgba(139,92,246,0.1), rgba(99,102,241,0.03)); }
+        .cube-front{ transform:translateZ(100px); }
+        .cube-back{ transform:rotateY(180deg) translateZ(100px); }
+        .cube-right{ transform:rotateY(90deg) translateZ(100px); }
+        .cube-left{ transform:rotateY(-90deg) translateZ(100px); }
+        .cube-top{ transform:rotateX(90deg) translateZ(100px); }
+        .cube-bottom{ transform:rotateX(-90deg) translateZ(100px); }
+        @media(max-width:1024px){ .cube-3d-wrap{ display:none !important; } }
 
         /* bento about grid */
         .bento-grid { display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(3,minmax(150px,auto)); grid-template-areas:"a a b b" "a a c d" "e e f f"; gap:20px; }
@@ -165,7 +189,6 @@ export default function PortfolioPage() {
           .masonry-grid{ grid-template-columns:1fr 1fr !important; grid-template-areas:"feat feat" "p2 p3" "p4 p5" "p6 p6" !important; }
         }
         @media(max-width:768px) {
-          .owner-grid { grid-template-columns:1fr !important; }
           .bento-grid{ grid-template-columns:1fr !important; grid-template-areas:none !important; grid-template-rows:auto !important; }
           .bento-a,.bento-b,.bento-c,.bento-d,.bento-e,.bento-f{ grid-area:auto !important; }
           .exp-row{ grid-template-columns:40px 1fr !important; }
@@ -183,107 +206,92 @@ export default function PortfolioPage() {
 
         {/* ═══ HERO ═══ */}
         <section style={{ minHeight: "100svh", display: "flex", alignItems: "center", position: "relative", overflow: "hidden" }}>
+          {/* starfield + glow */}
           <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-            <div style={{ position: "absolute", top: "-10%", right: "-5%", width: 600, height: 600, background: "radial-gradient(ellipse, rgba(139,92,246,0.1) 0%, transparent 65%)", borderRadius: "50%" }} />
-            <div style={{ position: "absolute", bottom: "0%", left: "-10%", width: 500, height: 500, background: "radial-gradient(ellipse, rgba(99,102,241,0.07) 0%, transparent 65%)", borderRadius: "50%" }} />
-            <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
-            {/* giant watermark wordmark */}
-            <div style={{ position: "absolute", top: "50%", right: "-2%", transform: "translateY(-50%)", fontSize: "clamp(6rem, 16vw, 11rem)", fontWeight: 900, letterSpacing: "-0.04em", color: "rgba(255,255,255,0.025)", fontFamily: "var(--sans)", whiteSpace: "nowrap", userSelect: "none" }}>
-              PORTFOLIO
+            {stars.map((s, i) => (
+              <div key={i} style={{ position: "absolute", left: `${s.left}%`, top: `${s.top}%`, width: s.size, height: s.size, borderRadius: "50%", background: "#fff", animation: `twinkle ${3 + s.delay}s ease-in-out infinite`, animationDelay: `${s.delay}s` }} />
+            ))}
+            <div style={{ position: "absolute", top: "-10%", right: "-5%", width: 600, height: 600, background: "radial-gradient(ellipse, rgba(139,92,246,0.12) 0%, transparent 65%)", borderRadius: "50%" }} />
+            <div style={{ position: "absolute", bottom: "0%", left: "-10%", width: 500, height: 500, background: "radial-gradient(ellipse, rgba(99,102,241,0.08) 0%, transparent 65%)", borderRadius: "50%" }} />
+          </div>
+
+          {/* animated 3D vector cube */}
+          <div className="cube-3d-wrap" style={{ position: "absolute", top: "50%", right: "9%", transform: "translateY(-50%)", zIndex: 0 }}>
+            <div className="cube-3d">
+              <div className="cube-face cube-front" />
+              <div className="cube-face cube-back" />
+              <div className="cube-face cube-right" />
+              <div className="cube-face cube-left" />
+              <div className="cube-face cube-top" />
+              <div className="cube-face cube-bottom" />
             </div>
           </div>
 
-          <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: 100, paddingBottom: 100 }}>
-            <div className="owner-grid">
-              {/* LEFT: avatar */}
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
-                <div style={{ position: "relative" }}>
-                  <div style={{ width: 180, height: 180, borderRadius: 28, background: "linear-gradient(135deg, rgba(139,92,246,0.25), rgba(99,102,241,0.12))", border: "1.5px solid rgba(139,92,246,0.3)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 80, animation: "float 5s ease-in-out infinite", boxShadow: "0 0 80px rgba(139,92,246,0.18), inset 0 1px 0 rgba(255,255,255,0.08)" }}>
-                    👨‍💻
-                  </div>
-                  <div style={{ position: "absolute", bottom: -8, right: -8, background: "rgba(9,9,11,0.95)", border: "1px solid rgba(74,222,128,0.3)", borderRadius: 10, padding: "5px 10px", display: "flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 700, color: "#4ade80", fontFamily: "var(--sans)" }}>
-                    <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#4ade80", boxShadow: "0 0 6px rgba(74,222,128,0.8)", animation: "pulse-ring 2s infinite" }} />
-                    Available
-                  </div>
-                </div>
-
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "#a78bfa", textTransform: "uppercase", marginBottom: 4, fontFamily: "var(--sans)" }}>Founder &amp; Developer</div>
-                  <div style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", fontFamily: "var(--sans)", display: "flex", alignItems: "center", justifyContent: "center", gap: 4 }}>
-                    <MapPin size={12} />
-                    West Bengal, India
-                  </div>
-                </div>
-
-                <div style={{ display: "flex", flexDirection: "column", gap: 8, width: "100%", maxWidth: 200 }}>
-                  {[
-                    { icon: <GitFork size={14} />, label: "Arghyadasdev", href: "https://github.com/Arghyadasdev", color: "#a78bfa" },
-                    { icon: <Mail size={14} />,   label: "arghayadasdev@gmail.com", href: "mailto:arghayadasdev@gmail.com", color: "#818cf8" },
-                    { icon: <Phone size={14} />,  label: "+91 7001982361", href: "tel:+917001982361", color: "#60a5fa" },
-                    { icon: <Globe size={14} />,  label: "devtech.live", href: "https://devtech.live", color: "#34d399" },
-                  ].map(({ icon, label, href, color }) => (
-                    <a key={label} href={href}
-                      style={{ display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 9, padding: "8px 12px", textDecoration: "none", color: "rgba(255,255,255,0.4)", fontSize: 12, fontFamily: "var(--sans)", transition: "all 0.15s ease", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
-                      onMouseEnter={(e) => { e.currentTarget.style.borderColor = color + "44"; e.currentTarget.style.color = color; e.currentTarget.style.background = color + "0f"; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)"; e.currentTarget.style.color = "rgba(255,255,255,0.4)"; e.currentTarget.style.background = "rgba(255,255,255,0.03)"; }}
-                    >
-                      <span style={{ flexShrink: 0 }}>{icon}</span>
-                      <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>{label}</span>
-                    </a>
-                  ))}
-                </div>
-
-                <div style={{ display: "flex", gap: 8, width: "100%", maxWidth: 200 }}>
-                  <a href="#projects-section" className="btn-violet" style={{ flex: 1, justifyContent: "center", fontSize: 13, padding: "9px 0" }}>Projects</a>
-                  <a href="mailto:arghayadasdev@gmail.com" className="btn-outline" style={{ flex: 1, justifyContent: "center", fontSize: 13, padding: "9px 0", display: "flex", alignItems: "center", gap: 6 }}>
-                    <Download size={13} />
-                    CV
-                  </a>
-                </div>
-              </div>
-
-              {/* RIGHT: text */}
-              <div>
-                <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(139,92,246,0.1)", border: "1px solid rgba(139,92,246,0.22)", borderRadius: 100, padding: "5px 14px", fontSize: 12, fontWeight: 600, color: "#a78bfa", letterSpacing: "0.04em", marginBottom: 28, textTransform: "uppercase", fontFamily: "var(--sans)" }}>
-                  <Sparkles size={12} />
-                  Personal Portfolio
-                </div>
-
-                <h1 style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", fontWeight: 900, lineHeight: 1.05, letterSpacing: "-0.04em", marginBottom: 8, fontFamily: "var(--sans)", color: "#fff" }}>
-                  Arghya Das Dev
-                </h1>
-
-                <p style={{ fontSize: "clamp(1rem, 2.2vw, 1.3rem)", fontWeight: 700, background: "linear-gradient(90deg, #a78bfa 0%, #818cf8 35%, #60a5fa 65%, #34d399 100%)", backgroundSize: "200% auto", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", marginBottom: 28, fontFamily: "var(--sans)", animation: "shimmer 4s linear infinite" }}>
-                  AI &amp; ML · Full-Stack · Cloud · Educator
-                </p>
-
-                <p style={{ fontSize: 16, color: "rgba(255,255,255,0.5)", lineHeight: 1.8, maxWidth: 560, marginBottom: 32, fontFamily: "var(--sans)" }}>
-                  I build intelligent software — predictive ML models, full-stack web platforms, and cloud infrastructure.
-                  I also teach and mentor students in programming, databases and AI.
-                  Founder of <a href="/" style={{ color: "#a78bfa", textDecoration: "none" }}>Dev Technology</a>.
-                </p>
-
-                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", fontFamily: "var(--sans)", marginBottom: 44, letterSpacing: "0.01em" }}>
-                  Python &nbsp;·&nbsp; React &nbsp;·&nbsp; TensorFlow &nbsp;·&nbsp; AWS &nbsp;·&nbsp; Node.js &nbsp;·&nbsp; Next.js &nbsp;·&nbsp; Docker &nbsp;·&nbsp; SQL
-                </div>
-
-                <div style={{ display: "flex", gap: 0 }}>
-                  {[
-                    { num: 15, suffix: "+", label: "Projects Built" },
-                    { num: 3,  suffix: "+", label: "Years Teaching" },
-                    { num: 3,  suffix: "",  label: "Publications" },
-                    { num: 12, suffix: "+", label: "Technologies" },
-                  ].map(({ num, suffix, label }, i) => (
-                    <div key={label} style={{ flex: 1, borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none", paddingRight: 24, paddingLeft: i > 0 ? 24 : 0 }}>
-                      <div style={{ fontSize: 36, fontWeight: 900, letterSpacing: "-0.03em", fontFamily: "var(--sans)", background: "linear-gradient(135deg, #fff, rgba(255,255,255,0.6))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                        <Counter target={num} suffix={suffix} />
-                      </div>
-                      <div style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", fontFamily: "var(--sans)", marginTop: 2 }}>{label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+          <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: 120, paddingBottom: 110 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(139,92,246,0.1)", border: "1px solid rgba(139,92,246,0.22)", borderRadius: 100, padding: "5px 14px", fontSize: 12, fontWeight: 600, color: "#a78bfa", letterSpacing: "0.04em", marginBottom: 20, textTransform: "uppercase", fontFamily: "var(--sans)" }}>
+              <Sparkles size={12} />
+              Personal Portfolio
             </div>
+
+            <div style={{ fontSize: "clamp(1rem, 2vw, 1.25rem)", color: "rgba(255,255,255,0.5)", marginBottom: 4, fontFamily: "var(--sans)" }}>Hi, I am</div>
+
+            <h1 style={{ fontSize: "clamp(3.2rem, 9vw, 7rem)", fontWeight: 900, lineHeight: 0.98, letterSpacing: "-0.04em", marginBottom: 20, fontFamily: "var(--sans)", color: "#fff" }}>
+              Arghya<br />
+              <span style={{ background: "linear-gradient(90deg, #a78bfa 0%, #818cf8 35%, #60a5fa 65%, #34d399 100%)", backgroundSize: "200% auto", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", animation: "shimmer 4s linear infinite" }}>
+                Das Dev
+              </span>
+            </h1>
+
+            <p style={{ fontSize: "clamp(1rem, 2vw, 1.3rem)", fontWeight: 700, color: "rgba(255,255,255,0.55)", marginBottom: 8, fontFamily: "var(--sans)" }}>
+              AI &amp; ML · Full-Stack Developer · Cloud · Educator
+            </p>
+
+            <div style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 13, color: "rgba(255,255,255,0.3)", fontFamily: "var(--sans)", marginBottom: 40 }}>
+              <MapPin size={12} />
+              West Bengal, India · Founder of <a href="/" style={{ color: "#a78bfa", textDecoration: "none" }}>Dev Technology</a>
+            </div>
+
+            <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 56 }}>
+              <a href="mailto:arghayadasdev@gmail.com" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", color: "#09090b", fontWeight: 700, fontSize: 14, padding: "12px 22px", borderRadius: 100, textDecoration: "none", fontFamily: "var(--sans)" }}>
+                <FileText size={16} />
+                Resume
+              </a>
+              <a href="mailto:arghayadasdev@gmail.com" className="btn-violet" style={{ fontSize: 14, padding: "12px 22px" }}>Hire Me</a>
+              {[
+                { icon: <GitFork size={16} />, href: "https://github.com/Arghyadasdev" },
+                { icon: <Mail size={16} />, href: "mailto:arghayadasdev@gmail.com" },
+                { icon: <Globe size={16} />, href: "https://devtech.live" },
+              ].map(({ icon, href }, i) => (
+                <a key={i} href={href}
+                  style={{ width: 44, height: 44, borderRadius: 10, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", textDecoration: "none", transition: "all 0.15s ease" }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(139,92,246,0.15)"; e.currentTarget.style.borderColor = "rgba(139,92,246,0.4)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.05)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; }}
+                >
+                  {icon}
+                </a>
+              ))}
+            </div>
+
+            <div style={{ display: "flex", gap: 0, maxWidth: 540 }}>
+              {[
+                { num: 15, suffix: "+", label: "Projects Built" },
+                { num: 3,  suffix: "+", label: "Years Teaching" },
+                { num: 3,  suffix: "",  label: "Publications" },
+                { num: 12, suffix: "+", label: "Technologies" },
+              ].map(({ num, suffix, label }, i) => (
+                <div key={label} style={{ flex: 1, borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none", paddingRight: 20, paddingLeft: i > 0 ? 20 : 0 }}>
+                  <div style={{ fontSize: 32, fontWeight: 900, letterSpacing: "-0.03em", fontFamily: "var(--sans)", background: "linear-gradient(135deg, #fff, rgba(255,255,255,0.6))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                    <Counter target={num} suffix={suffix} />
+                  </div>
+                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", fontFamily: "var(--sans)", marginTop: 2 }}>{label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* scroll indicator */}
+          <div style={{ position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)", width: 26, height: 44, borderRadius: 100, border: "1.5px solid rgba(255,255,255,0.25)", display: "flex", justifyContent: "center", paddingTop: 8, zIndex: 1 }}>
+            <div style={{ width: 4, height: 8, borderRadius: 100, background: "rgba(255,255,255,0.6)", animation: "scroll-dot 1.8s ease-in-out infinite" }} />
           </div>
         </section>
 
