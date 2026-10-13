@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import InkOrbitHero from "@/components/ui/ink-orbit-hero";
 import { useState, useEffect, useRef } from "react";
 import {
   Code2, Cloud, Brain, GraduationCap, Briefcase, Mail,
@@ -312,6 +313,31 @@ export default function PortfolioPage() {
           <div style={{ position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)", width: 26, height: 44, borderRadius: 100, border: "1.5px solid rgba(255,255,255,0.25)", display: "flex", justifyContent: "center", paddingTop: 8, zIndex: 1 }}>
             <div style={{ width: 4, height: 8, borderRadius: 100, background: "rgba(255,255,255,0.6)", animation: "scroll-dot 1.8s ease-in-out infinite" }} />
           </div>
+        </section>
+
+        {/* ═══ INK ORBIT — INTERACTIVE SHOWCASE ═══ */}
+        <section style={{ borderTop: "1px solid var(--border)" }}>
+          <InkOrbitHero
+            theme="dark"
+            titleTop="Forge Ideas With"
+            titleAccent={["AI & ML Models", "Full-Stack Platforms", "Cloud Pipelines"]}
+            description="From predictive models to production web platforms, I turn raw ideas into shipped software — then teach others to do the same."
+            primaryCta="Start a Project"
+            onPrimary={() => { window.location.href = "mailto:arghayadasdev@gmail.com"; }}
+            secondaryCta="Watch Demo"
+            demoSteps={[
+              { label: "Ingest", detail: "Pulling raw data from Sheets, APIs and support logs" },
+              { label: "Model", detail: "Training and validating the ML pipeline end to end" },
+              { label: "Build", detail: "Shipping the full-stack platform around it" },
+              { label: "Deploy", detail: "Rolling out to AWS with CI/CD and monitoring" },
+              { label: "Teach", detail: "Writing it up for students and mentees" },
+            ]}
+            proof={{ before: "Shipped across", value: "15+", after: "projects" }}
+            sculptureSeed={4211}
+            sculptureLabel="FORGE · 3D"
+            sculptureHint="Drag to rotate · Click to reforge"
+            minHeight="min(680px, 100svh)"
+          />
         </section>
 
         {/* ═══ ABOUT — BENTO GRID ═══ */}
