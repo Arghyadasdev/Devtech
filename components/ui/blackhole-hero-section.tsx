@@ -387,8 +387,8 @@ export function BlackHoleHeroSection({
 
     if (!gl) { giveUp("unsupported"); return; }
 
-    const dbg = gl.getExtension("WEBGL_debug_renderer_info");
-    const renderer = dbg ? String(gl.getParameter((dbg as any).UNMASKED_RENDERER_WEBGL) || "") : "";
+    const dbg = gl.getExtension("WEBGL_debug_renderer_info") as { UNMASKED_RENDERER_WEBGL: number } | null;
+    const renderer = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) || "") : "";
     const software = /swiftshader|llvmpipe|softpipe|software|microsoft basic/i.test(renderer);
     const isGL2 = typeof WebGL2RenderingContext !== "undefined" && gl instanceof WebGL2RenderingContext;
 
@@ -435,9 +435,9 @@ export function BlackHoleHeroSection({
       const ok = g2.getExtension("EXT_color_buffer_half_float") || g2.getExtension("EXT_color_buffer_float");
       if (ok) { texType = g2.HALF_FLOAT; internal = g2.RGBA16F; } else hdr = false;
     } else {
-      const hf = gl.getExtension("OES_texture_half_float");
+      const hf = gl.getExtension("OES_texture_half_float") as { HALF_FLOAT_OES: number } | null;
       const cb = gl.getExtension("EXT_color_buffer_half_float");
-      if (hf && cb) texType = (hf as any).HALF_FLOAT_OES;
+      if (hf && cb) texType = hf.HALF_FLOAT_OES;
       else hdr = false;
     }
     if (!hdr) { texType = gl.UNSIGNED_BYTE; internal = gl.RGBA; }
@@ -538,7 +538,7 @@ export function BlackHoleHeroSection({
       let rx = fz, ry = 0, rz = -fx;
       const rl = Math.hypot(rx, ry, rz) || 1;
       rx /= rl; ry /= rl; rz /= rl;
-      let ux = ry*fz - rz*fy, uy = rz*fx - rx*fz, uz = rx*fy - ry*fx;
+      const ux = ry*fz - rz*fy, uy = rz*fx - rx*fz, uz = rx*fy - ry*fx;
       const cr = Math.cos(C.roll * RAD), sr = Math.sin(C.roll * RAD);
       const RX = rx*cr + ux*sr, RY = ry*cr + uy*sr, RZ = rz*cr + uz*sr;
       const UX = -rx*sr + ux*cr, UY = -ry*sr + uy*cr, UZ = -rz*sr + uz*cr;

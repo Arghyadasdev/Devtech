@@ -77,7 +77,7 @@ export default function Testimonials() {
             <span className="gradient-text">Around the World</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-xl mx-auto">
-            Don't take our word for it — hear from the engineering leaders and
+            Don&apos;t take our word for it — hear from the engineering leaders and
             founders who chose Dev Technology.
           </p>
         </div>

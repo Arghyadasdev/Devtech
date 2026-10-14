@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import InkOrbitHero from "@/components/ui/ink-orbit-hero";
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import {
   Code2, Cloud, Brain, GraduationCap, Briefcase, Mail,
@@ -268,7 +269,7 @@ export default function PortfolioPage() {
 
             <div style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 13, color: "rgba(255,255,255,0.3)", fontFamily: "var(--sans)", marginBottom: 40 }}>
               <MapPin size={12} />
-              West Bengal, India · Founder of <a href="/" style={{ color: "#a78bfa", textDecoration: "none" }}>Dev Technology</a>
+              West Bengal, India · Founder of <Link href="/" style={{ color: "#a78bfa", textDecoration: "none" }}>Dev Technology</Link>
             </div>
 
             <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 56 }}>
@@ -588,13 +589,13 @@ export default function PortfolioPage() {
                 <p style={{ fontSize: 15, color: "var(--muted)", lineHeight: 1.75, maxWidth: 420, marginBottom: 28, fontFamily: "var(--sans)" }}>
                   Open for collaborations, research partnerships, teaching opportunities and freelance projects.
                 </p>
-                <a href="/" style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 13, color: "rgba(255,255,255,0.4)", textDecoration: "none", fontFamily: "var(--sans)", transition: "color 0.15s ease" }}
+                <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 13, color: "rgba(255,255,255,0.4)", textDecoration: "none", fontFamily: "var(--sans)", transition: "color 0.15s ease" }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#a78bfa")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
                 >
                   <ArrowRight size={13} />
                   Back to Dev Technology
-                </a>
+                </Link>
               </div>
 
               <div style={{ display: "flex", flexDirection: "column" }}>

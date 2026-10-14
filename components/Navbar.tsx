@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -41,18 +42,18 @@ export default function Navbar() {
         style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 60 }}
       >
         {/* Logo */}
-        <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
+        <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
           <img
             src="/logo.png"
             alt="Dev Technology"
             style={{ height: 52, width: "auto", display: "block" }}
           />
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <div className="hidden md:flex" style={{ alignItems: "center", gap: 4 }}>
           {navLinks.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               style={{
@@ -75,18 +76,18 @@ export default function Navbar() {
               }}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </div>
 
         {/* CTA */}
         <div className="hidden md:flex" style={{ alignItems: "center", gap: 8 }}>
-          <a href="/#contact" className="btn-outline" style={{ padding: "7px 18px", fontSize: 13 }}>
+          <Link href="/#contact" className="btn-outline" style={{ padding: "7px 18px", fontSize: 13 }}>
             Contact
-          </a>
-          <a href="/#contact" className="btn-violet" style={{ padding: "7px 18px", fontSize: 13 }}>
+          </Link>
+          <Link href="/#contact" className="btn-violet" style={{ padding: "7px 18px", fontSize: 13 }}>
             Get Started
-          </a>
+          </Link>
         </div>
 
         <button
@@ -111,18 +112,18 @@ export default function Navbar() {
           }}
         >
           {navLinks.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
               style={{ fontSize: 15, fontWeight: 500, color: "var(--muted)", textDecoration: "none" }}
             >
               {l.label}
-            </a>
+            </Link>
           ))}
-          <a href="/#contact" className="btn-violet" style={{ marginTop: 8, justifyContent: "center" }}>
+          <Link href="/#contact" className="btn-violet" style={{ marginTop: 8, justifyContent: "center" }}>
             Get Started
-          </a>
+          </Link>
         </div>
       )}
     </nav>
