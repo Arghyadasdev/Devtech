@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import Chatbot from "@/components/Chatbot";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
-import MetroHeroSection from "@/components/MetroHeroSection";
 import Services from "@/components/Services";
 import Showcase from "@/components/Showcase";
 import Projects from "@/components/Projects";
@@ -20,7 +19,6 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Stats />
-      <MetroHeroSection />
       <Services />
       <Showcase />
       <Projects />
