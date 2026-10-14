@@ -1,11 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const footerLinks = {
   Company: [
     { label: "About", href: "/#about" },
     { label: "Projects", href: "/#projects" },
+    { label: "Portfolio", href: "/portfolio" },
     { label: "Process", href: "/#process" },
     { label: "Contact", href: "/#contact" },
   ],
@@ -24,6 +27,20 @@ const footerLinks = {
 };
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#") && pathname === "/") {
+      e.preventDefault();
+      const id = href.replace("/#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", href.substring(1));
+      }
+    }
+  };
+
   return (
     <footer style={{ borderTop: "1px solid var(--border)", paddingTop: 64, paddingBottom: 40 }}>
       <div className="container">
@@ -39,13 +56,24 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div style={{ marginBottom: 16 }}>
-              <Image
-                src="/logo.png"
-                alt="Dev Technology"
-                width={159}
-                height={64}
-                style={{ height: 64, width: "auto", display: "block" }}
-              />
+              <Link
+                href="/"
+                onClick={(e) => {
+                  if (pathname === "/") {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    window.history.pushState(null, "", "/");
+                  }
+                }}
+              >
+                <Image
+                  src="/logo.png"
+                  alt="Dev Technology"
+                  width={159}
+                  height={64}
+                  style={{ height: 64, width: "auto", display: "block" }}
+                />
+              </Link>
             </div>
             <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.7, maxWidth: 260, marginBottom: 20 }}>
               Technology. Innovation. Digital Transformation.
@@ -94,17 +122,42 @@ export default function Footer() {
                 {section}
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                {links.map((l) => (
-                  <a
-                    key={l.label}
-                    href={l.href}
-                    style={{ fontSize: 13, color: "var(--muted)", textDecoration: "none", transition: "color 0.15s ease" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#e4e4e7")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
-                  >
-                    {l.label}
-                  </a>
-                ))}
+                {links.map((l) => {
+                  const isInternal = l.href.startsWith("/");
+                  const style = {
+                    fontSize: 13,
+                    color: "var(--muted)",
+                    textDecoration: "none",
+                    transition: "color 0.15s ease",
+                  };
+
+                  if (isInternal) {
+                    return (
+                      <Link
+                        key={l.label}
+                        href={l.href}
+                        onClick={(e) => handleLinkClick(e, l.href)}
+                        style={style}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = "#e4e4e7")}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+                      >
+                        {l.label}
+                      </Link>
+                    );
+                  }
+
+                  return (
+                    <a
+                      key={l.label}
+                      href={l.href}
+                      style={style}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "#e4e4e7")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+                    >
+                      {l.label}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           ))}
