@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 const projects = [
@@ -74,9 +75,9 @@ export default function Projects() {
               Selected <span className="gradient-text">Work</span>
             </h2>
           </div>
-          <a href="#contact" className="btn-outline">
+          <Link href="/#contact" className="btn-outline">
             Start Your Project <ArrowUpRight size={14} />
-          </a>
+          </Link>
         </div>
 
         {/* Grid */}

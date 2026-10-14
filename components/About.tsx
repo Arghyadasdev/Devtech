@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CheckCircle2, Award, Globe, Users } from "lucide-react";
 
 const pillars = [
@@ -76,8 +77,8 @@ export default function About() {
             </div>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <a href="#contact" className="btn-violet">Start a Project</a>
-              <a href="#projects" className="btn-outline">View Our Work</a>
+              <Link href="/#contact" className="btn-violet">Start a Project</Link>
+              <Link href="/#projects" className="btn-outline">View Our Work</Link>
             </div>
           </div>
 

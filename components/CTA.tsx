@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight, Zap } from "lucide-react";
 
 export default function CTA() {
@@ -88,12 +89,12 @@ export default function CTA() {
               designed for your business.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <a href="#contact" className="btn-violet" style={{ padding: "13px 28px", fontSize: 15 }}>
+              <Link href="/#contact" className="btn-violet" style={{ padding: "13px 28px", fontSize: 15 }}>
                 Start a Project <ArrowRight size={16} />
-              </a>
-              <a href="#contact" className="btn-outline" style={{ padding: "13px 28px", fontSize: 15 }}>
+              </Link>
+              <Link href="/#contact" className="btn-outline" style={{ padding: "13px 28px", fontSize: 15 }}>
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
         </div>

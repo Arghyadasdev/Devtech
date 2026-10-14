@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { BlackHoleHeroSection } from "@/components/ui/blackhole-hero-section";
 
@@ -111,8 +112,8 @@ export default function Hero() {
 
             {/* CTAs */}
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-              <a
-                href="#contact"
+              <Link
+                href="/#contact"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -131,9 +132,9 @@ export default function Hero() {
                 onMouseLeave={(e) => (e.currentTarget.style.background = "#8b5cf6")}
               >
                 Start a Project <ArrowRight size={15} />
-              </a>
-              <a
-                href="#projects"
+              </Link>
+              <Link
+                href="/#projects"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -152,7 +153,7 @@ export default function Hero() {
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; e.currentTarget.style.color = "rgba(255,255,255,0.8)"; }}
               >
                 View Our Work
-              </a>
+              </Link>
             </div>
           </div>
         </div>

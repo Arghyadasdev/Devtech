@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ImageStreamHero } from "@/components/ui/image-stream-hero";
 import { ArrowRight } from "lucide-react";
 
@@ -125,8 +126,8 @@ export default function Showcase() {
             that need technology that works.
           </p>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
-            <a
-              href="#projects"
+            <Link
+              href="/#projects"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -145,9 +146,9 @@ export default function Showcase() {
               onMouseLeave={(e) => (e.currentTarget.style.background = "#8b5cf6")}
             >
               View Projects <ArrowRight size={14} />
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              href="/#contact"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -166,7 +167,7 @@ export default function Showcase() {
               onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)")}
             >
               Start a Project
-            </a>
+            </Link>
           </div>
         </div>
       </ImageStreamHero>
