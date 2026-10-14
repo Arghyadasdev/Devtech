@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#solutions", label: "Solutions" },
-  { href: "#projects", label: "Projects" },
-  { href: "#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/#solutions", label: "Solutions" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#about", label: "About" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -41,7 +41,7 @@ export default function Navbar() {
         style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 60 }}
       >
         {/* Logo */}
-        <a href="#home" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
+        <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
           <img
             src="/logo.png"
             alt="Dev Technology"
@@ -81,10 +81,10 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex" style={{ alignItems: "center", gap: 8 }}>
-          <a href="#contact" className="btn-outline" style={{ padding: "7px 18px", fontSize: 13 }}>
+          <a href="/#contact" className="btn-outline" style={{ padding: "7px 18px", fontSize: 13 }}>
             Contact
           </a>
-          <a href="#contact" className="btn-violet" style={{ padding: "7px 18px", fontSize: 13 }}>
+          <a href="/#contact" className="btn-violet" style={{ padding: "7px 18px", fontSize: 13 }}>
             Get Started
           </a>
         </div>
@@ -120,7 +120,7 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a href="#contact" className="btn-violet" style={{ marginTop: 8, justifyContent: "center" }}>
+          <a href="/#contact" className="btn-violet" style={{ marginTop: 8, justifyContent: "center" }}>
             Get Started
           </a>
         </div>

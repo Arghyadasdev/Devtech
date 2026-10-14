@@ -2,17 +2,17 @@
 
 const footerLinks = {
   Company: [
-    { label: "About", href: "#about" },
-    { label: "Projects", href: "#projects" },
-    { label: "Process", href: "#process" },
-    { label: "Contact", href: "#contact" },
+    { label: "About", href: "/#about" },
+    { label: "Projects", href: "/#projects" },
+    { label: "Process", href: "/#process" },
+    { label: "Contact", href: "/#contact" },
   ],
   Services: [
-    { label: "Software Development", href: "#solutions" },
-    { label: "Cloud Solutions", href: "#solutions" },
-    { label: "AI & ML", href: "#solutions" },
-    { label: "DevOps", href: "#solutions" },
-    { label: "IT Consulting", href: "#solutions" },
+    { label: "Software Development", href: "/#solutions" },
+    { label: "Cloud Solutions", href: "/#solutions" },
+    { label: "AI & ML", href: "/#solutions" },
+    { label: "DevOps", href: "/#solutions" },
+    { label: "IT Consulting", href: "/#solutions" },
   ],
   Resources: [
     { label: "Blog", href: "#" },

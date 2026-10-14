@@ -8,7 +8,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section style={{ padding: "96px 0", background: "var(--surface)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+    <section id="process" style={{ padding: "96px 0", background: "var(--surface)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
       <div className="container">
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <span className="sec-label">Our Process</span>
