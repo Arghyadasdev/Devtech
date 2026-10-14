@@ -16,11 +16,35 @@ const projectTypes = [
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", projectType: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    setSending(true);
+    setError(null);
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/arghayadasdev@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone || "(not provided)",
+          company: form.company || "(not provided)",
+          projectType: form.projectType || "(not specified)",
+          message: form.message,
+          _subject: `New project inquiry from ${form.name}`,
+        }),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      setSent(true);
+    } catch {
+      setError("Couldn't send — please email arghayadasdev@gmail.com directly instead.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputStyle: React.CSSProperties = {
@@ -214,8 +238,18 @@ export default function Contact() {
                     onBlur={blur}
                   />
                 </div>
-                <button type="submit" className="btn-violet" style={{ justifyContent: "center", padding: "13px", fontSize: 14 }}>
-                  Send Message <Send size={14} />
+                {error && (
+                  <div style={{ fontSize: 13, color: "#fca5a5", background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: 8, padding: "10px 14px" }}>
+                    {error}
+                  </div>
+                )}
+                <button
+                  type="submit"
+                  className="btn-violet"
+                  disabled={sending}
+                  style={{ justifyContent: "center", padding: "13px", fontSize: 14, opacity: sending ? 0.6 : 1, cursor: sending ? "default" : "pointer" }}
+                >
+                  {sending ? "Sending..." : "Send Message"} <Send size={14} />
                 </button>
               </form>
             )}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -43,9 +44,12 @@ export default function Navbar() {
       >
         {/* Logo */}
         <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
-          <img
+          <Image
             src="/logo.png"
             alt="Dev Technology"
+            width={129}
+            height={52}
+            priority
             style={{ height: 52, width: "auto", display: "block" }}
           />
         </Link>

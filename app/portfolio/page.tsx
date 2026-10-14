@@ -1,8 +1,8 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import InkOrbitHero from "@/components/ui/ink-orbit-hero";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import {
@@ -128,6 +128,13 @@ function SkillRing({ name, level, color }: { name: string; level: number; color:
     </div>
   );
 }
+
+// Heavy canvas sculpture — kept out of initial hydration cost since it
+// renders below the fold.
+const InkOrbitHero = dynamic(() => import("@/components/ui/ink-orbit-hero"), {
+  ssr: false,
+  loading: () => <div style={{ minHeight: "min(680px, 100svh)", background: "#0b0b0b" }} />,
+});
 
 /* ── page ───────────────────────────────────── */
 export default function PortfolioPage() {

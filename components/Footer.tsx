@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 const footerLinks = {
   Company: [
     { label: "About", href: "/#about" },
@@ -37,9 +39,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div style={{ marginBottom: 16 }}>
-              <img
+              <Image
                 src="/logo.png"
                 alt="Dev Technology"
+                width={159}
+                height={64}
                 style={{ height: 64, width: "auto", display: "block" }}
               />
             </div>

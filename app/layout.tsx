@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://devtech.live"),
   title: "Dev Technology — Technology. Innovation. Digital Transformation.",
   description:
     "Dev Technology builds modern software, cloud infrastructure, AI solutions, and DevOps pipelines for businesses ready to grow.",
