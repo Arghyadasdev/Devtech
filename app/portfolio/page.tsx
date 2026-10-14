@@ -244,16 +244,18 @@ export default function PortfolioPage() {
             </div>
           </div>
 
-          {/* repo star badge */}
-          <a href="https://github.com/Arghyadasdev/Devtech" target="_blank" rel="noopener noreferrer"
-            style={{ position: "absolute", top: 20, right: 24, zIndex: 2, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 100, padding: "6px 14px", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)", textDecoration: "none", fontFamily: "var(--sans)", transition: "border-color 0.15s ease" }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(245,158,11,0.4)")}
-            onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
-          >
-            <GitFork size={13} />
-            {repoStars ?? "—"}
-            <Star size={13} fill="#f59e0b" color="#f59e0b" />
-          </a>
+          {/* repo star badge — hidden until there's something worth showing */}
+          {!!repoStars && (
+            <a href="https://github.com/Arghyadasdev/Devtech" target="_blank" rel="noopener noreferrer"
+              style={{ position: "absolute", top: 20, right: 24, zIndex: 2, display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 100, padding: "6px 14px", fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)", textDecoration: "none", fontFamily: "var(--sans)", transition: "border-color 0.15s ease" }}
+              onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(245,158,11,0.4)")}
+              onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
+            >
+              <GitFork size={13} />
+              {repoStars}
+              <Star size={13} fill="#f59e0b" color="#f59e0b" />
+            </a>
+          )}
 
           <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: 120, paddingBottom: 110 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(139,92,246,0.1)", border: "1px solid rgba(139,92,246,0.22)", borderRadius: 100, padding: "5px 14px", fontSize: 12, fontWeight: 600, color: "#a78bfa", letterSpacing: "0.04em", marginBottom: 20, textTransform: "uppercase", fontFamily: "var(--sans)" }}>

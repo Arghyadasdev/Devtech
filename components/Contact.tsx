@@ -188,31 +188,33 @@ export default function Contact() {
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                   <div>
-                    <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 6, fontWeight: 500 }}>Name *</label>
-                    <input type="text" required placeholder="Jane Smith" style={inputStyle} value={form.name}
+                    <label htmlFor="contact-name" style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 6, fontWeight: 500 }}>Name *</label>
+                    <input id="contact-name" name="name" type="text" required placeholder="Jane Smith" autoComplete="name" style={inputStyle} value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })} onFocus={focus} onBlur={blur} />
                   </div>
                   <div>
-                    <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 6, fontWeight: 500 }}>Email *</label>
-                    <input type="email" required placeholder="jane@company.com" style={inputStyle} value={form.email}
+                    <label htmlFor="contact-email" style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 6, fontWeight: 500 }}>Email *</label>
+                    <input id="contact-email" name="email" type="email" required placeholder="jane@company.com" autoComplete="email" style={inputStyle} value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })} onFocus={focus} onBlur={blur} />
                   </div>
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                   <div>
-                    <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 6, fontWeight: 500 }}>Phone</label>
-                    <input type="tel" placeholder="+91 XXXXXXXXXX" style={inputStyle} value={form.phone}
+                    <label htmlFor="contact-phone" style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 6, fontWeight: 500 }}>Phone</label>
+                    <input id="contact-phone" name="phone" type="tel" placeholder="+91 XXXXXXXXXX" autoComplete="tel" style={inputStyle} value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })} onFocus={focus} onBlur={blur} />
                   </div>
                   <div>
-                    <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 6, fontWeight: 500 }}>Company</label>
-                    <input type="text" placeholder="Acme Corp" style={inputStyle} value={form.company}
+                    <label htmlFor="contact-company" style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 6, fontWeight: 500 }}>Company</label>
+                    <input id="contact-company" name="company" type="text" placeholder="Acme Corp" autoComplete="organization" style={inputStyle} value={form.company}
                       onChange={(e) => setForm({ ...form, company: e.target.value })} onFocus={focus} onBlur={blur} />
                   </div>
                 </div>
                 <div>
-                  <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 6, fontWeight: 500 }}>Project Type</label>
+                  <label htmlFor="contact-project-type" style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 6, fontWeight: 500 }}>Project Type</label>
                   <select
+                    id="contact-project-type"
+                    name="projectType"
                     style={{ ...inputStyle, appearance: "none", cursor: "pointer" }}
                     value={form.projectType}
                     onChange={(e) => setForm({ ...form, projectType: e.target.value })}
@@ -226,8 +228,10 @@ export default function Contact() {
                   </select>
                 </div>
                 <div>
-                  <label style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 6, fontWeight: 500 }}>Message *</label>
+                  <label htmlFor="contact-message" style={{ display: "block", fontSize: 12, color: "var(--muted)", marginBottom: 6, fontWeight: 500 }}>Message *</label>
                   <textarea
+                    id="contact-message"
+                    name="message"
                     required
                     rows={5}
                     placeholder="Describe your project..."
