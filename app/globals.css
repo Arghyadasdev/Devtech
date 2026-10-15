@@ -7,10 +7,10 @@
   --card-hover: #1f1f23;
   --border: rgba(255, 255, 255, 0.07);
   --border-hover: rgba(255, 255, 255, 0.14);
-  --border-violet: rgba(139, 92, 246, 0.3);
-  --violet: #8b5cf6;
-  --violet-dim: rgba(139, 92, 246, 0.08);
-  --violet-mid: rgba(139, 92, 246, 0.15);
+  --border-violet: rgba(132,204,22, 0.3);
+  --violet: #84cc16;
+  --violet-dim: rgba(132,204,22, 0.08);
+  --violet-mid: rgba(132,204,22, 0.15);
   --text: #fafafa;
   --muted: #a1a1aa;
   --dim: #52525b;
@@ -36,7 +36,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-::selection { background: rgba(139, 92, 246, 0.35); color: #fff; }
+::selection { background: rgba(132,204,22, 0.35); color: #fff; }
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--violet); border-radius: 2px; }
@@ -70,14 +70,14 @@ body {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 40%, #6366f1 100%);
+  background: linear-gradient(135deg, #a3e635 0%, #84cc16 40%, #16a34a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-bright {
-  background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 50%, #818cf8 100%);
+  background: linear-gradient(135deg, #bef264 0%, #a3e635 50%, #4ade80 100%);
   background-size: 200% 200%;
   animation: shimmer 4s ease-in-out infinite;
   -webkit-background-clip: text;
@@ -100,7 +100,7 @@ body {
   font-weight: 500;
   background: var(--violet-dim);
   border: 1px solid var(--border-violet);
-  color: #c4b5fd;
+  color: #bef264;
   font-family: var(--sans);
 }
 
@@ -172,7 +172,7 @@ body {
   display: inline-block;
   font-size: 13px;
   font-weight: 600;
-  color: #a78bfa;
+  color: #a3e635;
   letter-spacing: 0.01em;
   margin-bottom: 12px;
 }

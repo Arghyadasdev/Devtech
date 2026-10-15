@@ -18,7 +18,7 @@ export default async function OgImage() {
           padding: "80px",
           background: "#09090b",
           backgroundImage:
-            "radial-gradient(circle at 25% 25%, rgba(139,92,246,0.25), transparent 50%), radial-gradient(circle at 80% 80%, rgba(99,102,241,0.18), transparent 50%)",
+            "radial-gradient(circle at 25% 25%, rgba(132,204,22,0.25), transparent 50%), radial-gradient(circle at 80% 80%, rgba(22,163,74,0.18), transparent 50%)",
         }}
       >
         <div
@@ -29,7 +29,7 @@ export default async function OgImage() {
             fontSize: 13,
             fontWeight: 700,
             letterSpacing: 4,
-            color: "#a78bfa",
+            color: "#a3e635",
             textTransform: "uppercase",
             marginBottom: 28,
           }}
@@ -55,7 +55,7 @@ export default async function OgImage() {
             fontSize: 72,
             fontWeight: 800,
             letterSpacing: -2,
-            color: "#8b5cf6",
+            color: "#84cc16",
             lineHeight: 1.08,
             marginBottom: 32,
           }}

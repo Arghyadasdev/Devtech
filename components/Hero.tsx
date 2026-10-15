@@ -54,9 +54,9 @@ export default function Hero() {
                 gap: 6,
                 padding: "5px 14px",
                 borderRadius: 100,
-                background: "rgba(139,92,246,0.15)",
-                border: "1px solid rgba(139,92,246,0.3)",
-                color: "#c4b5fd",
+                background: "rgba(132,204,22,0.15)",
+                border: "1px solid rgba(132,204,22,0.3)",
+                color: "#bef264",
                 fontSize: 12,
                 fontWeight: 500,
                 marginBottom: 28,
@@ -85,7 +85,7 @@ export default function Hero() {
               <br />
               <span
                 style={{
-                  background: "linear-gradient(135deg, #8b5cf6 0%, #a78bfa 50%, #c4b5fd 100%)",
+                  background: "linear-gradient(135deg, #84cc16 0%, #a3e635 50%, #bef264 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -120,7 +120,7 @@ export default function Hero() {
                   gap: 8,
                   padding: "13px 26px",
                   borderRadius: 100,
-                  background: "#8b5cf6",
+                  background: "#84cc16",
                   color: "#fff",
                   fontSize: 14,
                   fontWeight: 600,
@@ -128,8 +128,8 @@ export default function Hero() {
                   fontFamily: "var(--sans)",
                   transition: "background 0.15s ease",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "#7c3aed")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "#8b5cf6")}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#65a30d")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "#84cc16")}
               >
                 Start a Project <ArrowRight size={15} />
               </Link>

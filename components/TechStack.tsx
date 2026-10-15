@@ -44,7 +44,7 @@ export default function TechStack() {
                 style={{
                   fontSize: 11,
                   fontWeight: 700,
-                  color: "#a78bfa",
+                  color: "#a3e635",
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   marginBottom: 14,

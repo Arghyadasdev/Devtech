@@ -21,7 +21,7 @@ export default function About() {
           right: "-10%",
           width: 500,
           height: 400,
-          background: "radial-gradient(ellipse, rgba(99,102,241,0.07) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(22,163,74,0.07) 0%, transparent 70%)",
         }}
       />
 
@@ -115,7 +115,7 @@ export default function About() {
                 borderColor: "var(--border-violet)",
               }}
             >
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#a78bfa", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 10 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#a3e635", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 10 }}>
                 Brand Positioning
               </div>
               <p style={{ fontSize: 15, color: "var(--muted)", lineHeight: 1.7, fontStyle: "italic" }}>
@@ -129,9 +129,9 @@ export default function About() {
                       fontSize: 11,
                       padding: "3px 10px",
                       borderRadius: 100,
-                      background: "rgba(139,92,246,0.15)",
-                      border: "1px solid rgba(139,92,246,0.25)",
-                      color: "#c4b5fd",
+                      background: "rgba(132,204,22,0.15)",
+                      border: "1px solid rgba(132,204,22,0.25)",
+                      color: "#bef264",
                     }}
                   >
                     {t}

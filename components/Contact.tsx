@@ -62,7 +62,7 @@ export default function Contact() {
   };
 
   const focus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    (e.target.style.borderColor = "rgba(139,92,246,0.6)");
+    (e.target.style.borderColor = "rgba(132,204,22,0.6)");
   const blur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     (e.target.style.borderColor = "var(--border)");
 
@@ -115,7 +115,7 @@ export default function Contact() {
                     textDecoration: "none",
                     transition: "border-color 0.2s ease",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(139,92,246,0.4)")}
+                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(132,204,22,0.4)")}
                   onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
                 >
                   <div
@@ -123,8 +123,8 @@ export default function Contact() {
                       width: 40,
                       height: 40,
                       borderRadius: 10,
-                      background: "rgba(139,92,246,0.1)",
-                      border: "1px solid rgba(139,92,246,0.2)",
+                      background: "rgba(132,204,22,0.1)",
+                      border: "1px solid rgba(132,204,22,0.2)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",

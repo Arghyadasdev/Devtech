@@ -25,7 +25,7 @@ export default function CTA() {
               transform: "translate(-50%,-50%)",
               width: 700,
               height: 350,
-              background: "radial-gradient(ellipse, rgba(139,92,246,0.1) 0%, transparent 70%)",
+              background: "radial-gradient(ellipse, rgba(132,204,22,0.1) 0%, transparent 70%)",
             }}
           />
 
@@ -50,9 +50,9 @@ export default function CTA() {
                 gap: 6,
                 padding: "5px 14px",
                 borderRadius: 100,
-                background: "rgba(139,92,246,0.1)",
-                border: "1px solid rgba(139,92,246,0.25)",
-                color: "#c4b5fd",
+                background: "rgba(132,204,22,0.1)",
+                border: "1px solid rgba(132,204,22,0.25)",
+                color: "#bef264",
                 fontSize: 12,
                 fontWeight: 500,
                 marginBottom: 28,

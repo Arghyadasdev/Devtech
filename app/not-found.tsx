@@ -21,12 +21,12 @@ export default function NotFound() {
           style={{
             fontSize: 12,
             fontWeight: 700,
-            color: "#a78bfa",
+            color: "#a3e635",
             letterSpacing: "0.1em",
             textTransform: "uppercase",
             marginBottom: 16,
-            background: "rgba(139,92,246,0.1)",
-            border: "1px solid rgba(139,92,246,0.25)",
+            background: "rgba(132,204,22,0.1)",
+            border: "1px solid rgba(132,204,22,0.25)",
             padding: "4px 14px",
             borderRadius: 100,
           }}

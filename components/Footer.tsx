@@ -82,7 +82,7 @@ export default function Footer() {
               <a
                 href="tel:+917001982361"
                 style={{ fontSize: 13, color: "var(--muted)", textDecoration: "none", transition: "color 0.15s ease" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#a78bfa")}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#a3e635")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
               >
                 +91 7001982361
@@ -90,7 +90,7 @@ export default function Footer() {
               <a
                 href="mailto:arghayadasdev@gmail.com"
                 style={{ fontSize: 13, color: "var(--muted)", textDecoration: "none", transition: "color 0.15s ease", wordBreak: "break-all" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#a78bfa")}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#a3e635")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
               >
                 arghayadasdev@gmail.com
@@ -98,7 +98,7 @@ export default function Footer() {
               <a
                 href="https://devtech.live"
                 style={{ fontSize: 13, color: "var(--muted)", textDecoration: "none", transition: "color 0.15s ease" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#a78bfa")}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#a3e635")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
               >
                 devtech.live
@@ -113,7 +113,7 @@ export default function Footer() {
                 style={{
                   fontSize: 11,
                   fontWeight: 700,
-                  color: "#a78bfa",
+                  color: "#a3e635",
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
                   marginBottom: 18,

@@ -17,12 +17,12 @@ const skills = [
   { name: "Java",             level: 80, category: "language", color: "#f59e0b" },
   { name: "JavaScript",       level: 88, category: "language", color: "#f59e0b" },
   { name: "PHP",              level: 75, category: "language", color: "#f59e0b" },
-  { name: "React / Next.js",  level: 90, category: "frontend", color: "#6366f1" },
+  { name: "React / Next.js",  level: 90, category: "frontend", color: "#16a34a" },
   { name: "Node.js",          level: 82, category: "backend",  color: "#3b82f6" },
   { name: "SQL",              level: 85, category: "database", color: "#06b6d4" },
   { name: "AWS",              level: 78, category: "cloud",    color: "#10b981" },
-  { name: "Machine Learning", level: 88, category: "ai",       color: "#8b5cf6" },
-  { name: "TensorFlow",       level: 82, category: "ai",       color: "#8b5cf6" },
+  { name: "Machine Learning", level: 88, category: "ai",       color: "#84cc16" },
+  { name: "TensorFlow",       level: 82, category: "ai",       color: "#84cc16" },
   { name: "Docker",           level: 74, category: "devops",   color: "#ef4444" },
   { name: "Git / GitHub",     level: 95, category: "devops",   color: "#ef4444" },
 ];
@@ -32,7 +32,7 @@ const experience = [
     role: "Teaching Assistant & Lab Faculty",
     org: "Academic Institution",
     period: "2023 – Present",
-    color: "#a78bfa",
+    color: "#a3e635",
     points: [
       "Lab sessions for Programming, DBMS and Web Development",
       "Curriculum design and student assessment evaluation",
@@ -59,7 +59,7 @@ const projects = [
   { name: "Disease Prediction System", emoji: "🩺", color: "#ef4444", featured: false, tags: ["XGBoost","Flask"] },
   { name: "Health Risk Assessment",    emoji: "❤️",  color: "#ec4899", featured: false, tags: ["FastAPI","Next.js"] },
   { name: "Food Label OCR / NLP",      emoji: "🔬", color: "#10b981", featured: false, tags: ["OpenCV","spaCy"] },
-  { name: "Dev Technology Platform",   emoji: "🌐", color: "#8b5cf6", featured: false, tags: ["Next.js","WebGL"] },
+  { name: "Dev Technology Platform",   emoji: "🌐", color: "#84cc16", featured: false, tags: ["Next.js","WebGL"] },
   { name: "Cloud Lab Management",      emoji: "☁️",  color: "#06b6d4", featured: false, tags: ["AWS","Terraform"] },
 ];
 
@@ -166,7 +166,7 @@ export default function PortfolioPage() {
 
       <style>{`
         @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-        @keyframes pulse-ring { 0%{box-shadow:0 0 0 0 rgba(139,92,246,0.4)} 70%{box-shadow:0 0 0 20px rgba(139,92,246,0)} 100%{box-shadow:0 0 0 0 rgba(139,92,246,0)} }
+        @keyframes pulse-ring { 0%{box-shadow:0 0 0 0 rgba(132,204,22,0.4)} 70%{box-shadow:0 0 0 20px rgba(132,204,22,0)} 100%{box-shadow:0 0 0 0 rgba(132,204,22,0)} }
         @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
         @keyframes twinkle { 0%,100%{opacity:0.15} 50%{opacity:0.9} }
         @keyframes cube-spin { from{transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg);} to{transform:rotateX(360deg) rotateY(360deg) rotateZ(360deg);} }
@@ -174,7 +174,7 @@ export default function PortfolioPage() {
 
         .cube-3d-wrap{ perspective:1000px; }
         .cube-3d{ width:200px; height:200px; position:relative; transform-style:preserve-3d; animation:cube-spin 18s linear infinite; }
-        .cube-face{ position:absolute; width:200px; height:200px; border:1px solid rgba(139,92,246,0.45); background:linear-gradient(135deg, rgba(139,92,246,0.1), rgba(99,102,241,0.03)); }
+        .cube-face{ position:absolute; width:200px; height:200px; border:1px solid rgba(132,204,22,0.45); background:linear-gradient(135deg, rgba(132,204,22,0.1), rgba(22,163,74,0.03)); }
         .cube-front{ transform:translateZ(100px); }
         .cube-back{ transform:rotateY(180deg) translateZ(100px); }
         .cube-right{ transform:rotateY(90deg) translateZ(100px); }
@@ -189,7 +189,7 @@ export default function PortfolioPage() {
 
         /* zigzag experience timeline */
         .exp-zigzag{ position:relative; }
-        .exp-zigzag::before{ content:""; position:absolute; left:50%; top:4px; bottom:4px; width:1px; background:linear-gradient(180deg, rgba(139,92,246,0.4), rgba(139,92,246,0.05)); transform:translateX(-50%); }
+        .exp-zigzag::before{ content:""; position:absolute; left:50%; top:4px; bottom:4px; width:1px; background:linear-gradient(180deg, rgba(132,204,22,0.4), rgba(132,204,22,0.05)); transform:translateX(-50%); }
         .exp-row{ display:grid; grid-template-columns:1fr 48px 1fr; margin-bottom:28px; position:relative; }
         .exp-dot{ grid-column:2; display:flex; justify-content:center; padding-top:2px; }
         .exp-content.even{ grid-column:1; }
@@ -228,8 +228,8 @@ export default function PortfolioPage() {
             {stars.map((s, i) => (
               <div key={i} style={{ position: "absolute", left: `${s.left}%`, top: `${s.top}%`, width: s.size, height: s.size, borderRadius: "50%", background: "#fff", animation: `twinkle ${3 + s.delay}s ease-in-out infinite`, animationDelay: `${s.delay}s` }} />
             ))}
-            <div style={{ position: "absolute", top: "-10%", right: "-5%", width: 600, height: 600, background: "radial-gradient(ellipse, rgba(139,92,246,0.12) 0%, transparent 65%)", borderRadius: "50%" }} />
-            <div style={{ position: "absolute", bottom: "0%", left: "-10%", width: 500, height: 500, background: "radial-gradient(ellipse, rgba(99,102,241,0.08) 0%, transparent 65%)", borderRadius: "50%" }} />
+            <div style={{ position: "absolute", top: "-10%", right: "-5%", width: 600, height: 600, background: "radial-gradient(ellipse, rgba(132,204,22,0.12) 0%, transparent 65%)", borderRadius: "50%" }} />
+            <div style={{ position: "absolute", bottom: "0%", left: "-10%", width: 500, height: 500, background: "radial-gradient(ellipse, rgba(22,163,74,0.08) 0%, transparent 65%)", borderRadius: "50%" }} />
           </div>
 
           {/* animated 3D vector cube */}
@@ -258,7 +258,7 @@ export default function PortfolioPage() {
           )}
 
           <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: 120, paddingBottom: 110 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(139,92,246,0.1)", border: "1px solid rgba(139,92,246,0.22)", borderRadius: 100, padding: "5px 14px", fontSize: 12, fontWeight: 600, color: "#a78bfa", letterSpacing: "0.04em", marginBottom: 20, textTransform: "uppercase", fontFamily: "var(--sans)" }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(132,204,22,0.1)", border: "1px solid rgba(132,204,22,0.22)", borderRadius: 100, padding: "5px 14px", fontSize: 12, fontWeight: 600, color: "#a3e635", letterSpacing: "0.04em", marginBottom: 20, textTransform: "uppercase", fontFamily: "var(--sans)" }}>
               <Sparkles size={12} />
               Personal Portfolio
             </div>
@@ -267,7 +267,7 @@ export default function PortfolioPage() {
 
             <h1 style={{ fontSize: "clamp(3.2rem, 9vw, 7rem)", fontWeight: 900, lineHeight: 0.98, letterSpacing: "-0.04em", marginBottom: 20, fontFamily: "var(--sans)", color: "#fff" }}>
               Arghya<br />
-              <span style={{ background: "linear-gradient(90deg, #a78bfa 0%, #818cf8 35%, #60a5fa 65%, #34d399 100%)", backgroundSize: "200% auto", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", animation: "shimmer 4s linear infinite" }}>
+              <span style={{ background: "linear-gradient(90deg, #a3e635 0%, #4ade80 35%, #60a5fa 65%, #34d399 100%)", backgroundSize: "200% auto", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", animation: "shimmer 4s linear infinite" }}>
                 Das Dev
               </span>
             </h1>
@@ -278,7 +278,7 @@ export default function PortfolioPage() {
 
             <div style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 13, color: "rgba(255,255,255,0.3)", fontFamily: "var(--sans)", marginBottom: 40 }}>
               <MapPin size={12} />
-              West Bengal, India · Founder of <Link href="/" style={{ color: "#a78bfa", textDecoration: "none" }}>Dev Technology</Link>
+              West Bengal, India · Founder of <Link href="/" style={{ color: "#a3e635", textDecoration: "none" }}>Dev Technology</Link>
             </div>
 
             <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 56 }}>
@@ -294,7 +294,7 @@ export default function PortfolioPage() {
               ].map(({ icon, href }, i) => (
                 <a key={i} href={href}
                   style={{ width: 44, height: 44, borderRadius: 10, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", textDecoration: "none", transition: "all 0.15s ease" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(139,92,246,0.15)"; e.currentTarget.style.borderColor = "rgba(139,92,246,0.4)"; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(132,204,22,0.15)"; e.currentTarget.style.borderColor = "rgba(132,204,22,0.4)"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.05)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; }}
                 >
                   {icon}
@@ -362,8 +362,8 @@ export default function PortfolioPage() {
 
             <div className="bento-grid">
               {/* a — big feature */}
-              <div className="bento-a" style={{ background: "linear-gradient(135deg, rgba(139,92,246,0.1), var(--card))", border: "1px solid rgba(139,92,246,0.22)", borderRadius: 20, padding: 32, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
-                <Code2 size={28} color="#8b5cf6" style={{ marginBottom: 16 }} />
+              <div className="bento-a" style={{ background: "linear-gradient(135deg, rgba(132,204,22,0.1), var(--card))", border: "1px solid rgba(132,204,22,0.22)", borderRadius: 20, padding: 32, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+                <Code2 size={28} color="#84cc16" style={{ marginBottom: 16 }} />
                 <div style={{ fontSize: 19, fontWeight: 800, color: "#fff", marginBottom: 10, fontFamily: "var(--sans)" }}>Software Engineering</div>
                 <p style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.7, fontFamily: "var(--sans)", margin: 0, maxWidth: 400 }}>
                   Full-stack development across React, Next.js, Node.js, PHP and Python — production applications from system design through deployment.
@@ -392,8 +392,8 @@ export default function PortfolioPage() {
                 <p style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.6, fontFamily: "var(--sans)", margin: 0 }}>Healthcare AI, financial forecasting, document analysis.</p>
               </div>
               {/* f */}
-              <div className="bento-f" style={{ background: "linear-gradient(135deg, var(--card), rgba(99,102,241,0.08))", border: "1px solid var(--border)", borderRadius: 20, padding: 26, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <BookOpen size={20} color="#a78bfa" style={{ marginBottom: 10 }} />
+              <div className="bento-f" style={{ background: "linear-gradient(135deg, var(--card), rgba(22,163,74,0.08))", border: "1px solid var(--border)", borderRadius: 20, padding: 26, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                <BookOpen size={20} color="#a3e635" style={{ marginBottom: 10 }} />
                 <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 4, fontFamily: "var(--sans)" }}>Open Source</div>
                 <p style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.6, fontFamily: "var(--sans)", margin: 0 }}>ML utilities, web tools and educational resources on GitHub.</p>
               </div>
@@ -413,9 +413,9 @@ export default function PortfolioPage() {
                 {["skills", "frontend", "ai", "cloud", "devops"].map((tab) => (
                   <button key={tab} onClick={() => setActiveSection(tab)}
                     style={{ fontSize: 12, fontWeight: 600, padding: "6px 16px", borderRadius: 100, border: "1px solid", cursor: "pointer", transition: "all 0.15s ease", fontFamily: "var(--sans)", textTransform: "capitalize",
-                      borderColor: activeSection === tab ? "#8b5cf6" : "rgba(255,255,255,0.1)",
-                      background: activeSection === tab ? "rgba(139,92,246,0.15)" : "transparent",
-                      color: activeSection === tab ? "#a78bfa" : "var(--muted)",
+                      borderColor: activeSection === tab ? "#84cc16" : "rgba(255,255,255,0.1)",
+                      background: activeSection === tab ? "rgba(132,204,22,0.15)" : "transparent",
+                      color: activeSection === tab ? "#a3e635" : "var(--muted)",
                     }}>
                     {tab === "skills" ? "All" : tab}
                   </button>
@@ -542,15 +542,15 @@ export default function PortfolioPage() {
             <div style={{ maxWidth: 760, margin: "0 auto" }}>
               {publications.map((pub, i) => (
                 <div key={i} style={{ display: "flex", gap: 28, alignItems: "flex-start", padding: "28px 0", borderBottom: i < publications.length - 1 ? "1px solid var(--border)" : "none" }}>
-                  <div style={{ fontSize: 40, fontWeight: 800, color: "rgba(139,92,246,0.18)", lineHeight: 1, fontFamily: "var(--sans)", minWidth: 60, flexShrink: 0 }}>
+                  <div style={{ fontSize: 40, fontWeight: 800, color: "rgba(132,204,22,0.18)", lineHeight: 1, fontFamily: "var(--sans)", minWidth: 60, flexShrink: 0 }}>
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 8, lineHeight: 1.45, fontFamily: "var(--sans)" }}>{pub.title}</div>
-                    <div style={{ fontSize: 13, color: "#a78bfa", marginBottom: 10, fontFamily: "var(--sans)" }}>{pub.venue}</div>
+                    <div style={{ fontSize: 13, color: "#a3e635", marginBottom: 10, fontFamily: "var(--sans)" }}>{pub.venue}</div>
                     <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
                       <span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", fontFamily: "var(--sans)" }}>{pub.year}</span>
-                      <span style={{ fontSize: 11, fontWeight: 600, padding: "2px 9px", borderRadius: 100, background: "rgba(99,102,241,0.12)", border: "1px solid rgba(99,102,241,0.22)", color: "#818cf8", fontFamily: "var(--sans)" }}>{pub.type}</span>
+                      <span style={{ fontSize: 11, fontWeight: 600, padding: "2px 9px", borderRadius: 100, background: "rgba(22,163,74,0.12)", border: "1px solid rgba(22,163,74,0.22)", color: "#4ade80", fontFamily: "var(--sans)" }}>{pub.type}</span>
                     </div>
                   </div>
                 </div>
@@ -574,9 +574,9 @@ export default function PortfolioPage() {
                 <div key={i} style={{ position: "relative", background: "var(--card)", border: "1px solid var(--border)", borderRadius: 18, padding: "32px 28px", overflow: "hidden" }}>
                   <span style={{ position: "absolute", right: -8, bottom: -26, fontSize: 92, fontWeight: 900, color: "rgba(255,255,255,0.03)", lineHeight: 1, fontFamily: "var(--sans)", pointerEvents: "none" }}>{edu.short}</span>
                   <div style={{ position: "relative", zIndex: 1 }}>
-                    <GraduationCap size={22} color="#818cf8" style={{ marginBottom: 14 }} />
+                    <GraduationCap size={22} color="#4ade80" style={{ marginBottom: 14 }} />
                     <div style={{ fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 8, fontFamily: "var(--sans)" }}>{edu.degree}</div>
-                    <div style={{ fontSize: 13, color: "#818cf8", marginBottom: 10, fontFamily: "var(--sans)" }}>{edu.institution}</div>
+                    <div style={{ fontSize: 13, color: "#4ade80", marginBottom: 10, fontFamily: "var(--sans)" }}>{edu.institution}</div>
                     <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 12, fontFamily: "var(--sans)" }}>{edu.detail}</div>
                     <div style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.3)", fontFamily: "var(--sans)" }}>{edu.period}</div>
                   </div>
@@ -599,7 +599,7 @@ export default function PortfolioPage() {
                   Open for collaborations, research partnerships, teaching opportunities and freelance projects.
                 </p>
                 <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 13, color: "rgba(255,255,255,0.4)", textDecoration: "none", fontFamily: "var(--sans)", transition: "color 0.15s ease" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#a78bfa")}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#a3e635")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
                 >
                   <ArrowRight size={13} />
@@ -609,9 +609,9 @@ export default function PortfolioPage() {
 
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {[
-                  { icon: <Mail size={16} />, label: "arghayadasdev@gmail.com", href: "mailto:arghayadasdev@gmail.com", color: "#8b5cf6" },
-                  { icon: <Phone size={16} />, label: "+91 7001982361", href: "tel:+917001982361", color: "#6366f1" },
-                  { icon: <GitFork size={16} />, label: "github.com/Arghyadasdev", href: "https://github.com/Arghyadasdev", color: "#818cf8" },
+                  { icon: <Mail size={16} />, label: "arghayadasdev@gmail.com", href: "mailto:arghayadasdev@gmail.com", color: "#84cc16" },
+                  { icon: <Phone size={16} />, label: "+91 7001982361", href: "tel:+917001982361", color: "#16a34a" },
+                  { icon: <GitFork size={16} />, label: "github.com/Arghyadasdev", href: "https://github.com/Arghyadasdev", color: "#4ade80" },
                   { icon: <Globe size={16} />, label: "devtech.live", href: "https://devtech.live", color: "#34d399" },
                 ].map(({ icon, label, href, color }, i, arr) => (
                   <a key={label} href={href}

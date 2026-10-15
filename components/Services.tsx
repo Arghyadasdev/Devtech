@@ -5,7 +5,7 @@ import { ArrowUpRight, Cloud, Code2, Palette, Brain, GitBranch, Lightbulb } from
 const categories = [
   { icon: Lightbulb, title: "Strategy", desc: "Technology consulting, architecture planning and digital transformation.", color: "#f59e0b" },
   { icon: Palette, title: "Design", desc: "Modern UI/UX design and user-focused digital experiences.", color: "#ec4899" },
-  { icon: Code2, title: "Development", desc: "Web applications, software platforms and enterprise solutions.", color: "#8b5cf6" },
+  { icon: Code2, title: "Development", desc: "Web applications, software platforms and enterprise solutions.", color: "#84cc16" },
   { icon: Cloud, title: "Cloud", desc: "Cloud infrastructure, migration, deployment and management.", color: "#06b6d4" },
   { icon: Brain, title: "AI & Machine Learning", desc: "AI-powered applications, predictive models and intelligent automation.", color: "#10b981" },
   { icon: GitBranch, title: "DevOps", desc: "CI/CD, containerization, infrastructure automation and deployment.", color: "#f97316" },

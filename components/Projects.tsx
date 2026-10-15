@@ -9,7 +9,7 @@ const projects = [
     category: "AI / Machine Learning",
     desc: "AI-powered software and intelligent automation platform enabling businesses to automate repetitive workflows.",
     stack: ["Python", "TensorFlow", "FastAPI", "React"],
-    accent: "#8b5cf6",
+    accent: "#84cc16",
     span: "lg:col-span-2",
   },
   {

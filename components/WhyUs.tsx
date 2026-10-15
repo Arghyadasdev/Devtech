@@ -23,7 +23,7 @@ export default function WhyUs() {
           transform: "translate(-50%,-50%)",
           width: 600,
           height: 400,
-          background: "radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(132,204,22,0.06) 0%, transparent 70%)",
         }}
       />
 

@@ -134,7 +134,7 @@ export default function Showcase() {
                 gap: 8,
                 padding: "11px 24px",
                 borderRadius: 100,
-                background: "#8b5cf6",
+                background: "#84cc16",
                 color: "#fff",
                 fontSize: 14,
                 fontWeight: 600,
@@ -142,8 +142,8 @@ export default function Showcase() {
                 fontFamily: "var(--sans)",
                 transition: "background 0.15s ease",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "#7c3aed")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "#8b5cf6")}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "#65a30d")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "#84cc16")}
             >
               View Projects <ArrowRight size={14} />
             </Link>

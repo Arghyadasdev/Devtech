@@ -92,8 +92,8 @@ export default function Navbar() {
                   fontSize: 14,
                   fontWeight: isExactPage ? 600 : 500,
                   color: isExactPage ? "#fff" : "var(--muted)",
-                  background: isExactPage ? "rgba(139,92,246,0.15)" : "transparent",
-                  border: isExactPage ? "1px solid rgba(139,92,246,0.3)" : "1px solid transparent",
+                  background: isExactPage ? "rgba(132,204,22,0.15)" : "transparent",
+                  border: isExactPage ? "1px solid rgba(132,204,22,0.3)" : "1px solid transparent",
                   textDecoration: "none",
                   padding: "6px 14px",
                   borderRadius: 6,
@@ -166,7 +166,7 @@ export default function Navbar() {
                 style={{
                   fontSize: 15,
                   fontWeight: isExactPage ? 600 : 500,
-                  color: isExactPage ? "#a78bfa" : "var(--muted)",
+                  color: isExactPage ? "#a3e635" : "var(--muted)",
                   textDecoration: "none",
                 }}
               >
