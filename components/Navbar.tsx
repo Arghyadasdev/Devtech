@@ -47,15 +47,13 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 100,
-        background: scrolled ? "rgba(9,9,11,0.9)" : "transparent",
-        backdropFilter: scrolled ? "blur(20px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
-        transition: "all 0.3s ease",
+        padding: scrolled ? "10px 0" : "20px 0",
+        transition: "padding 0.3s ease",
       }}
     >
       <div
         className="container"
-        style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 60 }}
+        style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}
       >
         {/* Logo */}
         <Link
@@ -67,46 +65,72 @@ export default function Navbar() {
               window.history.pushState(null, "", "/");
             }
           }}
-          style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}
+          style={{
+            textDecoration: "none",
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            flexShrink: 0,
+            background: "rgba(9,9,11,0.7)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            backdropFilter: "blur(20px)",
+            borderRadius: 100,
+            padding: "6px 14px 6px 10px",
+          }}
         >
           <Image
             src="/logo.png"
             alt="Dev Technology"
-            width={129}
-            height={52}
+            width={104}
+            height={42}
             priority
-            style={{ height: 52, width: "auto", display: "block" }}
+            style={{ height: 36, width: "auto", display: "block" }}
           />
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex" style={{ alignItems: "center", gap: 4 }}>
+        {/* Desktop nav — glass pill with sliding active capsule */}
+        <div
+          className="hidden md:flex"
+          style={{
+            alignItems: "center",
+            gap: 2,
+            background: "rgba(9,9,11,0.7)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            backdropFilter: "blur(20px)",
+            borderRadius: 100,
+            padding: 4,
+          }}
+        >
           {navLinks.map((l) => {
-            const isExactPage = pathname === l.href;
+            const isActive = pathname === l.href;
             return (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={(e) => handleNavClick(e, l.href)}
                 style={{
-                  fontSize: 14,
-                  fontWeight: isExactPage ? 600 : 500,
-                  color: isExactPage ? "#fff" : "var(--muted)",
-                  background: isExactPage ? "rgba(132,204,22,0.15)" : "transparent",
-                  border: isExactPage ? "1px solid rgba(132,204,22,0.3)" : "1px solid transparent",
+                  position: "relative",
+                  fontSize: 13.5,
+                  fontWeight: isActive ? 600 : 500,
+                  color: isActive ? "#0b1405" : "var(--muted)",
+                  background: isActive ? "var(--violet)" : "transparent",
                   textDecoration: "none",
-                  padding: "6px 14px",
-                  borderRadius: 6,
-                  transition: "color 0.15s ease, background 0.15s ease",
-                  fontFamily: "var(--sans)",
+                  padding: "7px 16px",
+                  borderRadius: 100,
+                  transition: "color 0.2s ease, background 0.2s ease",
+                  whiteSpace: "nowrap",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "#fff";
-                  if (!isExactPage) e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+                  if (!isActive) {
+                    e.currentTarget.style.color = "#fff";
+                    e.currentTarget.style.background = "rgba(255,255,255,0.07)";
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = isExactPage ? "#fff" : "var(--muted)";
-                  if (!isExactPage) e.currentTarget.style.background = "transparent";
+                  if (!isActive) {
+                    e.currentTarget.style.color = "var(--muted)";
+                    e.currentTarget.style.background = "transparent";
+                  }
                 }}
               >
                 {l.label}
@@ -116,12 +140,20 @@ export default function Navbar() {
         </div>
 
         {/* CTA */}
-        <div className="hidden md:flex" style={{ alignItems: "center", gap: 8 }}>
+        <div className="hidden md:flex" style={{ alignItems: "center", gap: 8, flexShrink: 0 }}>
           <Link
             href="/#contact"
             onClick={(e) => handleNavClick(e, "/#contact")}
-            className="btn-outline"
-            style={{ padding: "7px 18px", fontSize: 13 }}
+            style={{
+              fontSize: 13,
+              fontWeight: 500,
+              color: "var(--muted)",
+              textDecoration: "none",
+              padding: "9px 16px",
+              transition: "color 0.15s ease",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
           >
             Contact
           </Link>
@@ -129,7 +161,7 @@ export default function Navbar() {
             href="/#contact"
             onClick={(e) => handleNavClick(e, "/#contact")}
             className="btn-violet"
-            style={{ padding: "7px 18px", fontSize: 13 }}
+            style={{ padding: "9px 20px", fontSize: 13, borderRadius: 100 }}
           >
             Get Started
           </Link>
@@ -138,50 +170,69 @@ export default function Navbar() {
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden"
-          style={{ background: "none", border: "none", cursor: "pointer", color: "var(--muted)" }}
+          style={{
+            background: "rgba(9,9,11,0.7)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            backdropFilter: "blur(20px)",
+            borderRadius: 100,
+            width: 40,
+            height: 40,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            color: "var(--muted)",
+            flexShrink: 0,
+          }}
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={18} /> : <Menu size={18} />}
         </button>
       </div>
 
       {open && (
         <div
-          style={{
-            background: "rgba(9,9,11,0.98)",
-            borderTop: "1px solid rgba(255,255,255,0.06)",
-            padding: "20px 24px 28px",
-            display: "flex",
-            flexDirection: "column",
-            gap: 16,
-            backdropFilter: "blur(20px)",
-          }}
+          className="container"
+          style={{ marginTop: 10 }}
         >
-          {navLinks.map((l) => {
-            const isExactPage = pathname === l.href;
-            return (
-              <Link
-                key={l.href}
-                href={l.href}
-                onClick={(e) => handleNavClick(e, l.href)}
-                style={{
-                  fontSize: 15,
-                  fontWeight: isExactPage ? 600 : 500,
-                  color: isExactPage ? "#a3e635" : "var(--muted)",
-                  textDecoration: "none",
-                }}
-              >
-                {l.label}
-              </Link>
-            );
-          })}
-          <Link
-            href="/#contact"
-            onClick={(e) => handleNavClick(e, "/#contact")}
-            className="btn-violet"
-            style={{ marginTop: 8, justifyContent: "center" }}
+          <div
+            style={{
+              background: "rgba(9,9,11,0.95)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              backdropFilter: "blur(20px)",
+              borderRadius: 20,
+              padding: "16px 20px 20px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 14,
+            }}
           >
-            Get Started
-          </Link>
+            {navLinks.map((l) => {
+              const isActive = pathname === l.href;
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  onClick={(e) => handleNavClick(e, l.href)}
+                  style={{
+                    fontSize: 15,
+                    fontWeight: isActive ? 600 : 500,
+                    color: isActive ? "#a3e635" : "var(--muted)",
+                    textDecoration: "none",
+                  }}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
+            <Link
+              href="/#contact"
+              onClick={(e) => handleNavClick(e, "/#contact")}
+              className="btn-violet"
+              style={{ marginTop: 6, justifyContent: "center", borderRadius: 100 }}
+            >
+              Get Started
+            </Link>
+          </div>
         </div>
       )}
     </nav>
