@@ -8,7 +8,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section style={{ padding: "0" }}>
+    <section style={{ padding: "40px 0 0" }}>
       <div className="container">
         <div
           style={{
@@ -17,7 +17,6 @@ export default function Stats() {
             background: "var(--card)",
             border: "1px solid var(--border)",
             borderRadius: 16,
-            margin: "0 0 0 0",
           }}
         >
           {stats.map((s, i) => (

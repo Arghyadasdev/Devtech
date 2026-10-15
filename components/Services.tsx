@@ -61,7 +61,7 @@ export default function Services() {
                 <div
                   key={c.title}
                   className="card card-violet"
-                  style={{ padding: "28px 28px", cursor: "pointer" }}
+                  style={{ padding: "28px 28px" }}
                 >
                   <div
                     style={{
