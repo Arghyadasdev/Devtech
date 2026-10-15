@@ -20,6 +20,9 @@
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--text);
+  --color-primary: var(--violet);
+  --color-border: var(--border);
+  --color-muted: var(--card);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }

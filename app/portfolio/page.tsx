@@ -3,12 +3,13 @@
 import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { NavBar as TubelightNavBar } from "@/components/ui/tubelight-navbar";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import {
   Code2, Cloud, Brain, GraduationCap, Briefcase, Mail,
   Phone, Globe, GitFork, FileText, ExternalLink, BookOpen,
-  FlaskConical, Sparkles, MapPin, ArrowRight, Star,
+  FlaskConical, Sparkles, MapPin, ArrowRight, Star, Home, User, FolderGit2,
 } from "lucide-react";
 
 /* ── data ────────────────────────────────────── */
@@ -160,9 +161,19 @@ export default function PortfolioPage() {
       .catch(() => {});
   }, []);
 
+  const quickNavItems = [
+    { name: "Home", url: "#hero-section", icon: Home },
+    { name: "About", url: "#about-section", icon: User },
+    { name: "Skills", url: "#skills-section", icon: Sparkles },
+    { name: "Experience", url: "#experience-section", icon: Briefcase },
+    { name: "Projects", url: "#projects-section", icon: FolderGit2 },
+    { name: "Contact", url: "#contact-section", icon: Mail },
+  ];
+
   return (
     <>
       <Navbar />
+      <TubelightNavBar items={quickNavItems} />
 
       <style>{`
         @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
@@ -222,7 +233,7 @@ export default function PortfolioPage() {
       <main style={{ background: "var(--bg)", paddingTop: 60 }}>
 
         {/* ═══ HERO ═══ */}
-        <section style={{ minHeight: "100svh", display: "flex", alignItems: "center", position: "relative", overflow: "hidden" }}>
+        <section id="hero-section" style={{ minHeight: "100svh", display: "flex", alignItems: "center", position: "relative", overflow: "hidden" }}>
           {/* starfield + glow */}
           <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
             {stars.map((s, i) => (
@@ -351,7 +362,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* ═══ ABOUT — BENTO GRID ═══ */}
-        <section style={{ padding: "96px 0", borderTop: "1px solid var(--border)" }}>
+        <section id="about-section" style={{ padding: "96px 0", borderTop: "1px solid var(--border)" }}>
           <div className="container">
             <div style={{ textAlign: "center", marginBottom: 56 }}>
               <div className="sec-label" style={{ marginBottom: 10 }}>About Me</div>
@@ -402,7 +413,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* ═══ SKILLS — RADIAL RINGS ═══ */}
-        <section style={{ padding: "96px 0", borderTop: "1px solid var(--border)" }}>
+        <section id="skills-section" style={{ padding: "96px 0", borderTop: "1px solid var(--border)" }}>
           <div className="container">
             <div style={{ textAlign: "center", marginBottom: 48 }}>
               <div className="sec-label" style={{ marginBottom: 10 }}>Technical Skills</div>
@@ -433,7 +444,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* ═══ EXPERIENCE — ZIGZAG TIMELINE ═══ */}
-        <section style={{ padding: "96px 0", borderTop: "1px solid var(--border)" }}>
+        <section id="experience-section" style={{ padding: "96px 0", borderTop: "1px solid var(--border)" }}>
           <div className="container">
             <div style={{ textAlign: "center", marginBottom: 56 }}>
               <div className="sec-label" style={{ marginBottom: 10 }}>Career</div>
@@ -587,7 +598,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* ═══ CONTACT — SPLIT LAYOUT ═══ */}
-        <section style={{ padding: "96px 0 120px", borderTop: "1px solid var(--border)" }}>
+        <section id="contact-section" style={{ padding: "96px 0 120px", borderTop: "1px solid var(--border)" }}>
           <div className="container">
             <div className="contact-split" style={{ maxWidth: 980, margin: "0 auto" }}>
               <div>
