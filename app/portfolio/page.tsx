@@ -3,13 +3,12 @@
 import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { NavBar as TubelightNavBar } from "@/components/ui/tubelight-navbar";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import {
   Code2, Cloud, Brain, GraduationCap, Briefcase, Mail,
   Phone, Globe, GitFork, FileText, ExternalLink, BookOpen,
-  FlaskConical, Sparkles, MapPin, ArrowRight, Star, Home, User, FolderGit2,
+  FlaskConical, Sparkles, MapPin, ArrowRight, Star,
 } from "lucide-react";
 
 /* ── data ────────────────────────────────────── */
@@ -161,19 +160,9 @@ export default function PortfolioPage() {
       .catch(() => {});
   }, []);
 
-  const quickNavItems = [
-    { name: "Home", url: "#hero-section", icon: Home },
-    { name: "About", url: "#about-section", icon: User },
-    { name: "Skills", url: "#skills-section", icon: Sparkles },
-    { name: "Experience", url: "#experience-section", icon: Briefcase },
-    { name: "Projects", url: "#projects-section", icon: FolderGit2 },
-    { name: "Contact", url: "#contact-section", icon: Mail },
-  ];
-
   return (
     <>
       <Navbar />
-      <TubelightNavBar items={quickNavItems} />
 
       <style>{`
         @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }

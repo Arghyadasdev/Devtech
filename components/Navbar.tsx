@@ -47,7 +47,7 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 100,
-        padding: scrolled ? "10px 0" : "20px 0",
+        padding: scrolled ? "14px 0" : "26px 0",
         transition: "padding 0.3s ease",
       }}
     >
@@ -75,16 +75,16 @@ export default function Navbar() {
             border: "1px solid rgba(255,255,255,0.08)",
             backdropFilter: "blur(20px)",
             borderRadius: 100,
-            padding: "6px 14px 6px 10px",
+            padding: "8px 18px 8px 12px",
           }}
         >
           <Image
             src="/logo.png"
             alt="Dev Technology"
-            width={104}
-            height={42}
+            width={127}
+            height={51}
             priority
-            style={{ height: 36, width: "auto", display: "block" }}
+            style={{ height: 44, width: "auto", display: "block" }}
           />
         </Link>
 
@@ -98,7 +98,7 @@ export default function Navbar() {
             border: "1px solid rgba(255,255,255,0.08)",
             backdropFilter: "blur(20px)",
             borderRadius: 100,
-            padding: 4,
+            padding: 6,
           }}
         >
           {navLinks.map((l) => {
@@ -110,12 +110,12 @@ export default function Navbar() {
                 onClick={(e) => handleNavClick(e, l.href)}
                 style={{
                   position: "relative",
-                  fontSize: 13.5,
+                  fontSize: 14.5,
                   fontWeight: isActive ? 600 : 500,
                   color: isActive ? "#0b1405" : "var(--muted)",
                   background: isActive ? "var(--violet)" : "transparent",
                   textDecoration: "none",
-                  padding: "7px 16px",
+                  padding: "10px 20px",
                   borderRadius: 100,
                   transition: "color 0.2s ease, background 0.2s ease",
                   whiteSpace: "nowrap",
@@ -145,11 +145,11 @@ export default function Navbar() {
             href="/#contact"
             onClick={(e) => handleNavClick(e, "/#contact")}
             style={{
-              fontSize: 13,
+              fontSize: 14,
               fontWeight: 500,
               color: "var(--muted)",
               textDecoration: "none",
-              padding: "9px 16px",
+              padding: "11px 18px",
               transition: "color 0.15s ease",
             }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
@@ -161,7 +161,7 @@ export default function Navbar() {
             href="/#contact"
             onClick={(e) => handleNavClick(e, "/#contact")}
             className="btn-violet"
-            style={{ padding: "9px 20px", fontSize: 13, borderRadius: 100 }}
+            style={{ padding: "12px 26px", fontSize: 14, borderRadius: 100 }}
           >
             Get Started
           </Link>
@@ -175,8 +175,8 @@ export default function Navbar() {
             border: "1px solid rgba(255,255,255,0.08)",
             backdropFilter: "blur(20px)",
             borderRadius: 100,
-            width: 40,
-            height: 40,
+            width: 48,
+            height: 48,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -185,7 +185,7 @@ export default function Navbar() {
             flexShrink: 0,
           }}
         >
-          {open ? <X size={18} /> : <Menu size={18} />}
+          {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
@@ -214,7 +214,7 @@ export default function Navbar() {
                   href={l.href}
                   onClick={(e) => handleNavClick(e, l.href)}
                   style={{
-                    fontSize: 15,
+                    fontSize: 16.5,
                     fontWeight: isActive ? 600 : 500,
                     color: isActive ? "#a3e635" : "var(--muted)",
                     textDecoration: "none",
