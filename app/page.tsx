@@ -3,6 +3,7 @@ import Chatbot from "@/components/Chatbot";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import Services from "@/components/Services";
+import Pricing from "@/components/Pricing";
 import Showcase from "@/components/Showcase";
 import Projects from "@/components/Projects";
 import WhyUs from "@/components/WhyUs";
@@ -20,6 +21,7 @@ export default function Home() {
       <Hero />
       <Stats />
       <Services />
+      <Pricing />
       <Showcase />
       <Projects />
       <WhyUs />

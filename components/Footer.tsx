@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 const footerLinks = {
   Company: [
     { label: "About", href: "/#about" },
+    { label: "Pricing", href: "/#pricing" },
     { label: "Projects", href: "/#projects" },
     { label: "Portfolio", href: "/portfolio" },
     { label: "Process", href: "/#process" },
