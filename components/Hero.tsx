@@ -155,6 +155,51 @@ export default function Hero() {
                 View Our Work
               </Link>
             </div>
+
+            {/* Demo video preview */}
+            <div
+              style={{
+                marginTop: 40,
+                maxWidth: 420,
+                position: "relative",
+                borderRadius: 16,
+                overflow: "hidden",
+                border: "1px solid rgba(132,204,22,0.35)",
+                boxShadow: "0 0 50px rgba(132,204,22,0.18), 0 20px 50px -20px rgba(0,0,0,0.6)",
+              }}
+            >
+              <span
+                style={{
+                  position: "absolute",
+                  top: 12,
+                  left: 12,
+                  zIndex: 1,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
+                  background: "rgba(9,9,11,0.7)",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  backdropFilter: "blur(10px)",
+                  borderRadius: 100,
+                  padding: "5px 12px",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: "#bef264",
+                  fontFamily: "var(--sans)",
+                }}
+              >
+                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#84cc16", display: "inline-block" }} />
+                Live Demo
+              </span>
+              <video
+                src="/video1.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+            </div>
           </div>
         </div>
       </BlackHoleHeroSection>
