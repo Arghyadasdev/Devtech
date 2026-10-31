@@ -32,8 +32,8 @@ const sections = [
   {
     id: "global-capability",
     badge: "Capability",
-    title: "One Team,",
-    subtitle: "Full Stack Coverage",
+    title: "One Team.",
+    subtitle: "Full-Stack Coverage.",
     description:
       "Software, cloud infrastructure, AI and DevOps under one roof. No handoffs between vendors, no gaps between teams — just one accountable partner from architecture to production.",
     align: "left" as const,
