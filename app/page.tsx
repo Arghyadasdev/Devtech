@@ -8,6 +8,7 @@ import Showcase from "@/components/Showcase";
 import Projects from "@/components/Projects";
 import WhyUs from "@/components/WhyUs";
 import TechStack from "@/components/TechStack";
+import GlobalReach from "@/components/GlobalReach";
 import About from "@/components/About";
 import Process from "@/components/Process";
 import CTA from "@/components/CTA";
@@ -26,6 +27,7 @@ export default function Home() {
       <Projects />
       <WhyUs />
       <TechStack />
+      <GlobalReach />
       <About />
       <Process />
       <CTA />
