@@ -42,6 +42,7 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
   const [activeSection, setActiveSection] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [globeTransform, setGlobeTransform] = useState("");
+  const [inView, setInView] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
   const animationFrameId = useRef<number | undefined>(undefined);
@@ -55,11 +56,16 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
     }));
   }, [globeConfig.positions]);
 
-  // Simple, direct scroll tracking
+  // Scroll tracking scoped to this component's own section range, not the
+  // whole document - otherwise the progress bar and active-section math
+  // are thrown off by everything else on the page above/below it.
   const updateScrollPosition = useCallback(() => {
-    const scrollTop = window.pageYOffset;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = Math.min(Math.max(scrollTop / docHeight, 0), 1);
+    const container = containerRef.current;
+    if (!container) return;
+
+    const containerTop = container.offsetTop;
+    const scrollableRange = Math.max(1, container.offsetHeight - window.innerHeight);
+    const progress = Math.min(Math.max((window.scrollY - containerTop) / scrollableRange, 0), 1);
 
     setScrollProgress(progress);
 
@@ -121,6 +127,20 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
     setGlobeTransform(initialTransform);
   }, [calculatedPositions]);
 
+  // The progress bar, nav dots and globe are position:fixed - without this
+  // gate they'd stay pinned to the viewport for the component's entire
+  // mounted lifetime, bleeding over every other section on the page
+  // instead of just this one's own section range.
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      threshold: 0,
+    });
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
       ref={containerRef}
@@ -129,8 +149,13 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
         className
       )}
     >
-      {/* Progress Bar */}
-      <div className="fixed top-0 left-0 w-full h-0.5 bg-gradient-to-r from-border/20 via-border/40 to-border/20 z-50">
+      {/* Progress Bar - only shown while this section is actually on screen */}
+      <div
+        className={cn(
+          "fixed top-0 left-0 w-full h-0.5 bg-gradient-to-r from-border/20 via-border/40 to-border/20 z-50 transition-opacity duration-300",
+          inView ? "opacity-100" : "opacity-0 pointer-events-none"
+        )}
+      >
         <div
           className="h-full bg-gradient-to-r from-primary via-blue-600 to-blue-900 will-change-transform shadow-sm"
           style={{
@@ -142,8 +167,13 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
         />
       </div>
 
-      {/* Navigation dots */}
-      <div className="hidden sm:flex fixed right-2 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40">
+      {/* Navigation dots - only shown while this section is actually on screen */}
+      <div
+        className={cn(
+          "hidden sm:flex fixed right-2 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40 transition-opacity duration-300",
+          inView ? "opacity-100" : "opacity-0 pointer-events-none"
+        )}
+      >
         <div className="space-y-3 sm:space-y-4 lg:space-y-6">
           {sections.map((section, index) => (
             <div key={index} className="relative group">
@@ -187,12 +217,14 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
         <div className="absolute left-1/2 top-0 bottom-0 w-0.5 lg:w-px bg-gradient-to-b from-transparent via-primary/20 to-transparent -translate-x-1/2 -z-10" />
       </div>
 
-      {/* Ultra-smooth Globe with responsive scaling */}
+      {/* Ultra-smooth Globe with responsive scaling - only shown while this section is actually on screen */}
       <div
         className="fixed z-10 pointer-events-none will-change-transform transition-all duration-[1400ms] ease-[cubic-bezier(0.23,1,0.32,1)]"
         style={{
           transform: globeTransform,
+          opacity: inView ? 1 : 0,
           filter: `opacity(${activeSection === 3 ? 0.4 : 0.85})`,
+          transitionProperty: "transform, opacity",
         }}
       >
         <div className="scale-75 sm:scale-90 lg:scale-100">
