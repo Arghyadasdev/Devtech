@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Chatbot from "@/components/Chatbot";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
+import MarqueeHero from "@/components/MarqueeHero";
 import Services from "@/components/Services";
 import Pricing from "@/components/Pricing";
 import Showcase from "@/components/Showcase";
@@ -21,6 +22,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Stats />
+      <MarqueeHero />
       <Services />
       <Pricing />
       <Showcase />
